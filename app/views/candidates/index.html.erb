@@ -8,7 +8,8 @@
 
   <li>
     <%= link_to '懇請賜票！！', vote_candidate_path(candidate.id), class: 'btn btn-md btn-warning', method:'put',data: { confirm: "R U SURE？", abd: 1234}%>
-    (<%= candidate.vote_logs.size%>票)
+    <!-- (<%= candidate.vote_logs_count %>票) -->
+    (<%= candidate.vote_logs.size %>票)
     <%= link_to candidate.name, candidate_path(candidate.id) %>
     <%= link_to '編輯', edit_candidate_path(candidate.id), class: 'btn btn-md btn-success' %>
     <%= link_to '刪除', candidate_path(candidate.id), {class: 'btn btn-md btn-danger', method:'delete',
