@@ -55,11 +55,15 @@ class CandidatesController < ApplicationController
     
     # vv = VotLog.new(candidate_id: @candidate.id, ip_address: request.remote_ip)
     # vv.save
-
-    VoteLog.create(candidate_id: @candidate.id, ip_address: request.remote_ip)
-    # @candidate.votlogs.create(ip_address: request.remote_ip)
-    
-    redirect_to root_path, notice: "投票成功"
+    if user_signed_in?
+      
+      VoteLog.create(candidate_id: @candidate.id, ip_address: request.remote_ip)
+      # @candidate.votlogs.create(ip_address: request.remote_ip)
+      
+      redirect_to root_path, notice: "投票成功"
+    else
+      redirect_to root_path, notice: "請先登入會員"
+    end
     
   end
 
